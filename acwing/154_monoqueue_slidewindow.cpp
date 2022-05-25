@@ -17,25 +17,21 @@ using namespace std;
 
 
 typedef long long ll;
-const ll mod = 1e9 + 7,N = 1e6+10;
+const ll mod = 1e9 + 7,N = 1e5+10;
 //-------------------------------------------------------------
-// 双端队列模拟单调栈
-// q:双端队列，存放数组下标
-// a:存放数组
-// hh:队首，tt;队尾
-int q[N],a[N],hh, tt;
-int n, k;
-
+// 数组模拟单调栈
+int stk[N],tt = 0;
+int n, x;
 int main(){
-	VI a = {1,2,3,4,5};
-	int i = 0;
-	for(auto &x : a)
-		printf("%d %p %p\n", x,&x,&a[i++]);
+	scanf("%d",&n);
+	while(n--){
+		scanf("%d",&x);
+		while(tt && stk[tt] > x) tt--;
+		if(tt) printf("%d ", stk[tt]);
+		else printf("-1 ");
+		stk[++tt] = x;
 
-	for(auto &x : a)
-		x = 6;
-	for(auto &x : a)
-		printf("%d ",x);
+	}
 	return 0;
 }
 
